@@ -2,18 +2,19 @@ class AuthorsController < ApplicationController
     def new
     end
     def index
-        @authors=Author.all
+        @author=Author.all
     end
     def show
-        @authors=Author.find(params[:id])
+        @author=Author.find(params[:id])
     end
     def create
         @author = Author.new(author_params)
         if @author.save
-        redirect_to authors_path
+        redirect_to @author
         else
         render 'new'
         end
+    end
     def update
     end
     def edit
@@ -25,4 +26,3 @@ def author_params
 params.require(:author).permit(:fname, :lname, :bio)
 end    
 end
-
